@@ -11,3 +11,4 @@ export const MenuItem = ({title}) => (
              </div>
            </div>
        );
+
