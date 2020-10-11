@@ -1,9 +1,9 @@
 //this will be the code that binds all the states together.
 
-import { combineReducer } from 'redux'
+import { combineReducers } from 'redux'
 
 import userReducer from './user/user.reducer'
 
-export default combineReducer({
+export default combineReducers({
     user: userReducer
 })
