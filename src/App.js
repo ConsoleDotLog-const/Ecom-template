@@ -13,8 +13,10 @@ import SignInSignUp from './components/sign-in-up/sign-in-up'
 import CheckOutPage from './pages/checkout/checkout'
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
-import { setCurrentUser } from './redux/user/user.actions' 
-import { selectCurrentUser} from './redux/user/user.selector'
+
+import { setCurrentUser } from './redux/user/user.actions'
+import { selectCurrentUser } from './redux/user/user.selector'
+
 
 
 
@@ -37,6 +39,7 @@ class App extends React.Component {
       }
 
       setCurrentUser(userAuth);
+      addCollectionAndDocuments('collections', collectionsArray.map(({ title, items }) => ({ title, items })))
     });
   }
 
@@ -59,8 +62,8 @@ class App extends React.Component {
               this.props.currentUser ? (
                 <Redirect to='/' />
               ) : (
-                <SignInSignUp/>
-              )
+                  <SignInSignUp />
+                )
             }
           />
         </Switch>
@@ -70,7 +73,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+
 });
 
 const mapDispatchToProps = dispatch => ({
